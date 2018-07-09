@@ -3,11 +3,12 @@
 const pg = require('pg');
 const fs = require('fs');
 const express = require('express');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const app = express();
 
 // DONE-TODO: Don't forget to set your own conString
-const conString = 'postgres://postgres:san!asP4nts@localhost:5432/kilovolt';
+// const conString = 'postgres://postgres:san!asP4nts@localhost:5432/kilovolt';
+const conString = 'postgres://amanda:1234@localhost:5432/kilovolt';
 
 const client = new pg.Client(conString);
 client.connect();
@@ -30,10 +31,9 @@ app.get('/articles', (request, response) => {
   // REVIEW: This query will join the data together from our tables and send it back to the client.
   // DONE?TODO: Write a SQL query which joins all data from articles and authors tables on the author_id value of each.
   client.query(`
-    SELECT *
-    FROM authors
-    INNER JOIN articles
-    ON author_id = articles_id;`)
+    SELECT * FROM articles
+    INNER JOIN authors
+    ON articles.author_id = authors.author_id;`)
     .then(result => {
       response.send(result.rows);
     })
@@ -117,7 +117,7 @@ app.put('/articles/:id', function (request, response) {
   let SQL = `UPDATE authors
   SET
     author=$1, 
-    author_url=$2,
+    author_url=$2
     WHERE author_id=$3;`;
   let values = [
     request.body.author,
@@ -130,19 +130,19 @@ app.put('/articles/:id', function (request, response) {
       // DONE-TODO: In the provided array, add the required values from the request as data for the SQL query to interpolate.
       let SQL = `UPDATE articles
       SET
-        author_id=$1,
-        title=$2,
-        category=$3,
-        published_on=$4,
-        body=$5
-        WHERE article_id=$6;`;
+        title=$1,
+        category=$2,
+        published_on=$3,
+        body=$4,
+        author_id=$6
+        WHERE article_id=$5;`;
       let values = [
-        request.body.author_id,
         request.body.title,
         request.body.category,
         request.body.published_on,
         request.body.body,
-        request.body.article_id
+        request.params.id,
+        request.body.author_id
       ];
       client.query(SQL, values)
     })
