@@ -1,22 +1,21 @@
 # Project Name
 
-**Author**: Your Name Goes Here
-**Version**: 1.0.0 (increment the patch/fix version number up if you make more commits past your first submission)
+**Author**: Amanda Moen and Suzanne Leber
+**Version**: 2.0.3 (increment the patch/fix version number up if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code Fellows 301 class. (i.e. What's your problem domain?) -->
+This application uses 2 tables to populate articles within the webpage.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+Fork and clone, then npm i, then nodemon.
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-
+HTML5, CSS3, JavaScript, jquery, PostgreSQL, Handlebars, node, express, pg, SQL, nodemon, etc.
 ## Change Log
-<!-- Use this are to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
+06-15-2018 11:10am - Went through the reviews, completed first 4 todo's.
+06-15-2018 12:19pm - Got 3 queries in app.post working.
+06-15-2018 1:38pm - Completed our todo's
+07-08-2018 5:32pm - Finally got that Put working.  Lab is now complete!
 
 ## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
+Luther and Sarah
